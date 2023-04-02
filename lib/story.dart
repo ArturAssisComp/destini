@@ -10,4 +10,9 @@ class Story {
   }
   late String _storyTitle;
   late String _choice1, _choice2;
+
+  //getters:
+  String get storyTitle => _storyTitle;
+  String get choice1 => _choice1;
+  String get choice2 => _choice2;
 }
