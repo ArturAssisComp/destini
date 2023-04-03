@@ -34,20 +34,47 @@ class StoryBrain {
         choice2: '')
   ];
 
+  StoryBrain() {
+    _storyData[0].initChoice1Child(2);
+    _storyData[0].initChoice2Child(1);
+
+    _storyData[1].initChoice1Child(2);
+    _storyData[1].initChoice2Child(3);
+
+    _storyData[2].initChoice1Child(5);
+    _storyData[2].initChoice2Child(4);
+
+    _storyData[3].initChoice1Child(null);
+    _storyData[3].initChoice2Child(null);
+
+    _storyData[4].initChoice1Child(null);
+    _storyData[4].initChoice2Child(null);
+
+    _storyData[5].initChoice1Child(null);
+    _storyData[5].initChoice2Child(null);
+  }
+
   //Methods
   String getStory() => _storyData[_storyNumber].storyTitle;
   String getChoice1() => _storyData[_storyNumber].choice1;
   String getChoice2() => _storyData[_storyNumber].choice2;
-  void nextStory(int choiceNumber) {}
+  void nextStory(int choiceNumber) {
+    int? nextStoryNumber;
+    if (choiceNumber == 1) {
+      nextStoryNumber = _storyData[_storyNumber].choice1Child;
+    } else if (choiceNumber == 2) {
+      nextStoryNumber = _storyData[_storyNumber].choice2Child;
+    }
+
+    if (nextStoryNumber != null) {
+      _storyNumber = nextStoryNumber;
+    }
+  }
 }
 
 //TODO: Step 23 - Use the storyNumber property inside getStory(), getChoice1() and getChoice2() so that it gets the updated story and choices rather than always just the first (0th) one.
 
 //TODO: Step 25 - Change the storyNumber property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (storyNumber) and selecting Refactor -> Rename to make the change across all the places where it's used.
-
-//TODO: Step 20 - Download the story plan here: https://drive.google.com/uc?export=download&id=1KU6EghkO9Hf2hRM0756xFHgNaZyGCou3
-
-//TODO: Step 21 - Using the story plan, update nextStory() to change the storyNumber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyNumber is 0, the storyNumber should become 2.
 
 //TODO: Step 22 - In nextStory() if the storyNumber is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the storyNumber to 0.
 
